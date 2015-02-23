@@ -12,4 +12,7 @@ app.controller('RestaurantsCtrl', function RestaurantsCtrl($scope) {
     $scope.restaurantPrice = null;
     $scope.restaurantRating = null;
   };
+  $scope.deleteRestaurant = function(item) {
+    $scope.restaurants.splice($scope.restaurants.indexOf(item), 1);
+  };
 });

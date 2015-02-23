@@ -11,6 +11,7 @@
 </head>
 <body>
   <div class="container" ng-controller="RestaurantsCtrl">
+
     <div class="col-md-4">
       <h2>Add a restaurant</h2>
       <form ng-submit="addRestaurant()" role="form">
@@ -21,8 +22,17 @@
           <input type="text" ng-model="restaurantRating" class="form-control" placeholder="Rating">
           <button type="submit" class="btn btn-info">Submit</button>
         </div>
-
       </form>
+    </div>
+
+    <div class="col-md-12">
+      <h2 ng-show="restaurants.length">Restaurant List</h2>
+      <ul>
+        <li ng-repeat="item in restaurants">
+          {{item.name}} - {{item.cuisine}} - {{item.price}} - {{item.rating}}
+          <a ng-click="deleteRestaurant(item)">[x]</a>
+        </li>
+      </ul>
     </div>
 
 
