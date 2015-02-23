@@ -12,7 +12,7 @@
 <body>
   <div class="container" ng-controller="RestaurantsCtrl">
 
-    <div class="col-md-12">
+    <div class="col-md-12" ng-show="restaurants.length">
       <h4>Search restaurants</h4>
       <form class="form-inline" role="form">
         <div class="form-group">
@@ -39,8 +39,19 @@
       <h2 ng-show="restaurants.length && !filtered.length">No Matches</h2>
       <ul>
         <li ng-repeat="item in filtered = (restaurants | filter:query)">
-          {{item.name}} - {{item.cuisine}} - {{item.price}} - {{item.rating}}
-          <a ng-click="deleteRestaurant(item)">[x]</a>
+          <span ng-click="editing = true" ng-hide="editing">
+            {{item.name}} - {{item.cuisine}} - {{item.price}} - {{item.rating}}
+            <a ng-click="deleteRestaurant(item)">[x]</a>
+          </span>
+          <span class="form-group" ng-show="editing" ng-submit="editing = false">
+            <form class="form" role="form">
+              <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="{{item.name}}" autofocus>
+              <input type="text" class="form-control input-sm" ng-model="item.cuisine" placeholder="{{item.cuisine}}">
+              <input type="text" class="form-control input-sm" ng-model="item.price" placeholder="{{item.price}}">
+              <input type="text" class="form-control input-sm" ng-model="item.rating" placeholder="{{item.rating}}">
+              <button class="btn btn-default btn.sm" type="submit">Save</button>
+            </form>
+          </span>
         </li>
       </ul>
     </div>
