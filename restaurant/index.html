@@ -2,10 +2,12 @@
 <html ng-app="restaurant">
 <head>
   <title>Best Restaurants</title>
+  <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
   <script src="../lib/angular.js"></script>
   <script src="app.js"></script>
   <script src="js/RestaurantController.js"></script>
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+  <!-- <script src="js/jquery.rating.pack.js"></script> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/bootstrap-paper.css">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
@@ -36,7 +38,21 @@
             <option value="$$$$">$$$$</option>
           </select>
 
-          <input type="text" ng-model="restaurantRating" class="form-control" placeholder="Rating">
+          <!-- <input name="1" type="radio" class="star"/ ng-model="restaurantRating">
+          <input name="2" type="radio" class="star"/ ng-model="restaurantRating">
+          <input name="3" type="radio" class="star"/ ng-model="restaurantRating">
+          <input name="4" type="radio" class="star"/ ng-model="restaurantRating">
+          <input name="5" type="radio" class="star"/ ng-model="restaurantRating"> -->
+
+          <select class="form-control" ng-model="restaurantRating">
+            <option value="" selected="selected">Select Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+
           <button type="submit" class="btn btn-info">Submit</button>
         </div>
       </form>
@@ -48,7 +64,7 @@
       <ul>
         <li ng-repeat="item in filtered = (restaurants | filter:query)">
           <span ng-click="editing = true" ng-hide="editing">
-            {{item.name}} - {{item.cuisine}} - {{item.price}} - {{item.rating}}
+            {{item.name}} - {{item.cuisine}} - {{item.price}} - {{ratingTotal(item)}}<span id="rating-total"></span>
             <a ng-click="deleteRestaurant(item)">[x]</a>
           </span>
           <span class="form-group" ng-show="editing" ng-submit="editing = false; reRateRestaurant(item, newRating)">
@@ -63,7 +79,15 @@
                 <option value="$$$$">$$$$</option>
               </select>
 
-              <input type="text" class="form-control input-sm" ng-model="newRating" placeholder="{{item.rating}}">
+              <select class="form-control" ng-model="newRating">
+                <option value="" selected="selected">Select Rating</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+
               <button class="btn btn-default btn.sm" type="submit">Save</button>
             </form>
           </span>
