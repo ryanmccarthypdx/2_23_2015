@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="restaurant">
+<head>
+  <title>Best Restaurants</title>
+  <script src="../lib/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="js/RestaurantController.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="../css/bootstrap-paper.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="container" ng-controller="RestaurantsCtrl">
+    <div class="col-md-4">
+      <h2>Add a restaurant</h2>
+      <form ng-submit="addRestaurant()" role="form">
+        <div class="form-group">
+          <input type="text" ng-model="restaurantName" class="form-control" placeholder="Name">
+          <input type="text" ng-model="restaurantCuisine" class="form-control" placeholder="Cuisine">
+          <input type="text" ng-model="restaurantPrice" class="form-control" placeholder="Price">
+          <input type="text" ng-model="restaurantRating" class="form-control" placeholder="Rating">
+          <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+
+      </form>
+    </div>
+
+
+
+  </div>
+</body>
+</html>
