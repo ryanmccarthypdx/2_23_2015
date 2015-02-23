@@ -12,6 +12,15 @@
 <body>
   <div class="container" ng-controller="RestaurantsCtrl">
 
+    <div class="col-md-12">
+      <h4>Search restaurants</h4>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <input ng-model="query" type="text" class="form-control" placeholder="Search">
+        </div>
+      </form>
+    </div>
+
     <div class="col-md-4">
       <h2>Add a restaurant</h2>
       <form ng-submit="addRestaurant()" role="form">
@@ -26,9 +35,10 @@
     </div>
 
     <div class="col-md-12">
-      <h2 ng-show="restaurants.length">Restaurant List</h2>
+      <h2 ng-show="restaurants.length && filtered.length">Restaurant List</h2>
+      <h2 ng-show="restaurants.length && !filtered.length">No Matches</h2>
       <ul>
-        <li ng-repeat="item in restaurants">
+        <li ng-repeat="item in filtered = (restaurants | filter:query)">
           {{item.name}} - {{item.cuisine}} - {{item.price}} - {{item.rating}}
           <a ng-click="deleteRestaurant(item)">[x]</a>
         </li>

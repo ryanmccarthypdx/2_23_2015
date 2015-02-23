@@ -6,5 +6,5 @@ studentRoster.controller('StudentsCtrl', function StudentsCtrl($scope) {
   };
   $scope.deleteStudent = function(student) {
     $scope.students.splice($scope.students.indexOf(student), 1);
-  }
+  };
 });
