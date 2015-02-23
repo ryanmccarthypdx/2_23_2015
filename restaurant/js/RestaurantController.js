@@ -9,7 +9,7 @@ app.controller('RestaurantsCtrl', function RestaurantsCtrl($scope) {
     });
     $scope.restaurantName = null;
     $scope.restaurantCuisine = null;
-    $scope.restaurantPrice = null;
+    $scope.restaurantPrice = "";
     $scope.restaurantRating = null;
   };
   $scope.deleteRestaurant = function(item) {

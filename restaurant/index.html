@@ -27,7 +27,15 @@
         <div class="form-group">
           <input type="text" ng-model="restaurantName" class="form-control" placeholder="Name">
           <input type="text" ng-model="restaurantCuisine" class="form-control" placeholder="Cuisine">
-          <input type="text" ng-model="restaurantPrice" class="form-control" placeholder="Price">
+
+          <select class="form-control" ng-model="restaurantPrice">
+            <option value="" selected="selected">Select Price</option>
+            <option value="$">$</option>
+            <option value="$$">$$</option>
+            <option value="$$$">$$$</option>
+            <option value="$$$$">$$$$</option>
+          </select>
+
           <input type="text" ng-model="restaurantRating" class="form-control" placeholder="Rating">
           <button type="submit" class="btn btn-info">Submit</button>
         </div>
@@ -47,7 +55,14 @@
             <form class="form" role="form">
               <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="{{item.name}}" autofocus>
               <input type="text" class="form-control input-sm" ng-model="item.cuisine" placeholder="{{item.cuisine}}">
-              <input type="text" class="form-control input-sm" ng-model="item.price" placeholder="{{item.price}}">
+
+              <select class="form-control select-sm" ng-model="item.price">
+                <option value="$">$</option>
+                <option value="$$">$$</option>
+                <option value="$$$">$$$</option>
+                <option value="$$$$">$$$$</option>
+              </select>
+
               <input type="text" class="form-control input-sm" ng-model="item.rating" placeholder="{{item.rating}}">
               <button class="btn btn-default btn.sm" type="submit">Save</button>
             </form>
