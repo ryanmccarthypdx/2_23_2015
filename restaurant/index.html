@@ -51,7 +51,7 @@
             {{item.name}} - {{item.cuisine}} - {{item.price}} - {{item.rating}}
             <a ng-click="deleteRestaurant(item)">[x]</a>
           </span>
-          <span class="form-group" ng-show="editing" ng-submit="editing = false">
+          <span class="form-group" ng-show="editing" ng-submit="editing = false; reRateRestaurant(item, newRating)">
             <form class="form" role="form">
               <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="{{item.name}}" autofocus>
               <input type="text" class="form-control input-sm" ng-model="item.cuisine" placeholder="{{item.cuisine}}">
@@ -63,7 +63,7 @@
                 <option value="$$$$">$$$$</option>
               </select>
 
-              <input type="text" class="form-control input-sm" ng-model="item.rating" placeholder="{{item.rating}}">
+              <input type="text" class="form-control input-sm" ng-model="newRating" placeholder="{{item.rating}}">
               <button class="btn btn-default btn.sm" type="submit">Save</button>
             </form>
           </span>
