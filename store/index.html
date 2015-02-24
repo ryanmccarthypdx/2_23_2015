@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="store">
+<head>
+  <title>Store</title>
+  <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+  <script src="../lib/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="js/StoreController.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-paper.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="container" ng-controller="ProductsCtrl">
+
+    <div class="col-md-12" ng-show="products.length">
+      <h4>Search products</h4>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <input ng-model="query" type="text" class="form-control" placeholder="Search">
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-4">
+      <h2>Add a product</h2>
+      <form ng-submit="addProduct()" role="form">
+        <div class="form-group">
+          <input type="text" ng-model="productName" class="form-control" placeholder="Name">
+
+          <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-12">
+      <h2 ng-show="products.length && filtered.length">Product List</h2>
+      <h2 ng-show="products.length && !filtered.length">No Matches</h2>
+      <form ng-submit="addToCart()" role="form">
+        <p ng-repeat="item in filtered = (products | filter:query)">
+          <input type="checkbox" ng-model="productSelected" ng-true-value="'{{item.name}}'">{{item.name}}
+        {{productSelected}}
+        </p>
+      <button type="submit" class="btn btn-info">Add to Cart</button>
+      </form>
+    </div>
+
+
+
+  </div>
+</body>
+</html>
